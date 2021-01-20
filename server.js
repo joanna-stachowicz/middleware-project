@@ -14,10 +14,6 @@ app.use('/user', (req, res) => {
   res.show('forbidden.html');
 });
 
-app.use((req, res) => {
-  res.status(404).show('404.html');
-})
-
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
@@ -39,6 +35,10 @@ app.get('/forbidden', (req, res) => {
 app.get('/404', (req, res) => {
   res.show('404.html');
 });
+
+app.use((req, res) => {
+  res.status(404).show('404.html');
+})
 
 app.listen(8000, () => {
   console.log('Server is running on port: 8000');
